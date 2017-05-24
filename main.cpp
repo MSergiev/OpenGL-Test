@@ -122,7 +122,7 @@ int main(){
 	glGenTextures(1, &diffuseMap);
 	int width, height;
 	unsigned char* image;
-	image=SOIL_load_image("brick.jpg", &width, &height, 0, SOIL_LOAD_RGB);
+	image=SOIL_load_image("container.jpg", &width, &height, 0, SOIL_LOAD_RGB);
 	glBindTexture(GL_TEXTURE_2D, diffuseMap);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 	glGenerateMipmap(GL_TEXTURE_2D);
@@ -135,6 +135,7 @@ int main(){
 
 	shader.Use();
 	glUniform1i(glGetUniformLocation(shader.Program, "material.diffuse"), 0);
+	glUniform1i(glGetUniformLocation(shader.Program, "material.specular"), 0);
 
 //LOOP
 	while(!glfwWindowShouldClose(window)){
@@ -157,10 +158,10 @@ int main(){
 
 	GLint matAmbientLoc=glGetUniformLocation(shader.Program, "material.ambient");
 	//GLint matDiffuseLoc=glGetUniformLocation(shader.Program, "material.diffuse");
-	GLint matSpecularLoc=glGetUniformLocation(shader.Program, "material.specular");
+	//GLint matSpecularLoc=glGetUniformLocation(shader.Program, "material.specular");
 	GLint matShineLoc=glGetUniformLocation(shader.Program, "material.shininess"); 
 	glUniform3f(matAmbientLoc, 0.24f, 0.2f, 0.07f);
-	glUniform3f(matSpecularLoc, 0.62f, 0.55f, 0.36f);
+	//glUniform3f(matSpecularLoc, 0.62f, 0.55f, 0.36f);
 	glUniform1f(matShineLoc, 32.0f);
 
 	GLint objectColorLoc=glGetUniformLocation(shader.Program, "objectColor");
