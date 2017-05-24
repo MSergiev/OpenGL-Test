@@ -1,5 +1,5 @@
 # OpenGL-Test
-OpenGL shading and texture test
+OpenGL shading and texture test based on the tutorials on learnopengl.com
 
 Allows basic movement and camera controls.
 
